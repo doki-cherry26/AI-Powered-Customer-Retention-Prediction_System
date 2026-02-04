@@ -2,230 +2,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Telecom Customer Churn Prediction</title>
+<meta charset="UTF-8">
+<title>Telecom Customer Churn Prediction System</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f8f9fa;
-            line-height: 1.6;
-        }
+section{
+    padding:30px;
+    max-width:1000px;
+    margin:auto;
+}
 
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
+.card{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:25px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
 
-        .section {
-            background: #ffffff;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
+h2{color:#38bdf8;border-bottom:1px solid #334155;padding-bottom:8px;}
+ul{line-height:1.8;}
+code{
+    background:#1e293b;
+    padding:4px 8px;
+    border-radius:6px;
+    color:#22c55e;
+}
 
-        pre {
-            background: #272822;
-            color: #f8f8f2;
-            padding: 15px;
-            overflow-x: auto;
-            border-radius: 6px;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
 
-        img {
-            max-width: 100%;
-            margin-top: 15px;
-            border-radius: 6px;
-        }
+.sim-card{
+    text-align:center;
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:10px;
+    padding:15px;
+}
+.sim-card img{width:80px;}
 
-        .highlight {
-            background: #eef6ff;
-            padding: 10px;
-            border-left: 5px solid #007bff;
-            margin-top: 10px;
-        }
-    </style>
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+    border-top:1px solid #334155;
+    color:#94a3b8;
+}
+</style>
 </head>
 
 <body>
 
-<h1>📊 Telecom Customer Churn Prediction</h1>
+<header>
+    <h1>📡 Telecom Customer Churn Prediction System</h1>
+    <p>End-to-End Machine Learning Pipeline with Auto Optimization</p>
+</header>
+
+<section>
+
+<div class="card">
+<h2>📘 Project Overview</h2>
 <p>
-    This project builds a complete end-to-end Machine Learning pipeline
-    to predict customer churn using advanced preprocessing, feature
-    engineering, and multiple ML models.
+This project predicts whether a telecom customer will churn using machine learning.  
+It automatically selects the best preprocessing methods, encoders, scalers, and classification models.
 </p>
-
-<!-- ================= PIPELINE OVERVIEW ================= -->
-<div class="section">
-    <h2>🔄 Project Pipeline Overview</h2>
-    <p>
-        The following diagram represents the complete workflow of the churn
-        prediction system.
-    </p>
-
-    <img src="images/pipeline_flow.png" alt="ML Pipeline Flow Diagram">
 </div>
 
-<!-- ================= DATA LOADING ================= -->
-<div class="section">
-    <h2>📂 Data Loading & Splitting</h2>
-    <p>
-        The dataset is loaded from CSV, the target variable <b>Churn</b>
-        is encoded, and data is split into training and testing sets.
-    </p>
-
-    <pre>
-class TELE_CUSTOMER:
-    def __init__(self, path):
-        self.df = pd.read_csv(path)
-        self.y = self.df['Churn'].map({'Yes':1,'No':0})
-        self.X = self.df.drop(['Churn','customerID'], axis=1)
-    </pre>
+<div class="card">
+<h2>⚙️ System Pipeline</h2>
+<ul>
+<li>Data Loading & Cleaning</li>
+<li>Best Missing Value Imputer (Constant, Mean, Median, KNN)</li>
+<li>Outlier Detection & Handling (Clip vs Remove)</li>
+<li>Feature Selection (Variance, Chi-Square, Pearson)</li>
+<li>Best Categorical Encoding (Ordinal, Target, Binary, Hashing)</li>
+<li>SMOTE Data Balancing</li>
+<li>Automatic Feature Scaling</li>
+<li>Model Training & Selection</li>
+</ul>
 </div>
 
-<!-- ================= MISSING VALUES ================= -->
-<div class="section">
-    <h2>🧩 Missing Value Handling</h2>
-    <p>
-        Multiple imputation techniques are evaluated using a
-        RandomForest model, and the best one is selected based on F1-score.
-    </p>
-
-    <ul>
-        <li>Mean Imputation</li>
-        <li>Median Imputation</li>
-        <li>Constant Value Imputation</li>
-        <li>KNN Imputation</li>
-    </ul>
-
-    <img src="images/missing_values.png" alt="Missing Values Handling">
+<div class="card">
+<h2>🤖 Machine Learning Models</h2>
+<div class="grid">
+<div>KNN</div>
+<div>Naive Bayes</div>
+<div>Logistic Regression</div>
+<div>Decision Tree</div>
+<div>Random Forest</div>
+<div>AdaBoost</div>
+<div>Gradient Boosting</div>
+<div>XGBoost</div>
+<div>SVM</div>
+</div>
 </div>
 
-<!-- ================= TRANSFORMATION ================= -->
-<div class="section">
-    <h2>🔁 Variable Transformation & Scaling</h2>
-    <p>
-        Each numerical feature is tested with transformations to reduce
-        skewness and improve model performance.
-    </p>
-
-    <ul>
-        <li>Log Transformation</li>
-        <li>Square Root Transformation</li>
-        <li>Yeo-Johnson Transformation</li>
-    </ul>
-
-    <div class="highlight">
-        ✔ Best transformation is selected <b>per column</b> using F1-score
-    </div>
+<div class="card">
+<h2>📂 Project Files</h2>
+<ul>
+<li><code>main.py</code> → Pipeline Controller</li>
+<li><code>missing_values.py</code> → Best Imputer</li>
+<li><code>variable_outliers.py</code> → Outlier Handling</li>
+<li><code>feature_selection.py</code> → Feature Selection</li>
+<li><code>cat_to_num.py</code> → Encoding</li>
+<li><code>data_balancing.py</code> → SMOTE</li>
+<li><code>all_models.py</code> → Model Training</li>
+<li><code>Churn_Prediction_Best_Model.pkl</code> → Best Model</li>
+</ul>
 </div>
 
-<!-- ================= OUTLIERS ================= -->
-<div class="section">
-    <h2>📦 Outlier Detection & Treatment</h2>
-    <p>
-        Several statistical techniques are compared to handle extreme values.
-    </p>
-
-    <ul>
-        <li>IQR Capping</li>
-        <li>Z-Score Capping</li>
-        <li>Modified Z-Score</li>
-        <li>Percentile Capping</li>
-        <li>Isolation Forest</li>
-    </ul>
-
-    <h3>Before Outlier Handling</h3>
-    <img src="images/outliers_before.png">
-
-    <h3>After Outlier Handling</h3>
-    <img src="images/outliers_after.png">
+<div class="card">
+<h2>🖥 Web Interface</h2>
+<p>Users enter customer data and select SIM cards using logos.</p>
+<div class="grid">
+<div class="sim-card">
+<img src="static/images/airtel.png"><p>Airtel</p>
+</div>
+<div class="sim-card">
+<img src="static/images/jio.png"><p>Jio</p>
+</div>
+<div class="sim-card">
+<img src="static/images/vi.png"><p>Vodafone</p>
+</div>
+<div class="sim-card">
+<img src="static/images/bsnl.png"><p>BSNL</p>
+</div>
+</div>
 </div>
 
-<!-- ================= FEATURE SELECTION ================= -->
-<div class="section">
-    <h2>🧠 Feature Selection</h2>
-    <p>
-        Constant and quasi-constant features are removed using
-        Variance Threshold to reduce noise.
-    </p>
-
-    <pre>
-VarianceThreshold(threshold=0.001)
-    </pre>
+<div class="card">
+<h2>📊 Outputs</h2>
+<ul>
+<li><code>Churn_Prediction_Best_Model.pkl</code></li>
+<li><code>best_scaler.pkl</code></li>
+<li><code>cat_encoder.pkl</code></li>
+<li><code>feature_column.pkl</code></li>
+</ul>
 </div>
 
-<!-- ================= ENCODING ================= -->
-<div class="section">
-    <h2>🔤 Categorical Encoding</h2>
-    <p>
-        Categorical features are converted into numerical form using:
-    </p>
+</section>
 
-    <ul>
-        <li>Ordinal Encoding</li>
-        <li>One-Hot Encoding</li>
-        <li>Target Encoding</li>
-        <li>Binary Encoding</li>
-        <li>Hash Encoding</li>
-    </ul>
-</div>
-
-<!-- ================= BALANCING ================= -->
-<div class="section">
-    <h2>⚖️ Data Balancing</h2>
-    <p>
-        Since churn data is imbalanced, SMOTE is applied to improve
-        minority class learning.
-    </p>
-
-    <div class="highlight">
-        ✔ SMOTE dynamically adjusts neighbors based on minority samples
-    </div>
-</div>
-
-<!-- ================= MODELS ================= -->
-<div class="section">
-    <h2>🤖 Model Training</h2>
-    <p>The following models are trained and evaluated:</p>
-
-    <ul>
-        <li>KNN</li>
-        <li>Naive Bayes</li>
-        <li>Logistic Regression</li>
-        <li>Decision Tree</li>
-        <li>Random Forest</li>
-        <li>AdaBoost</li>
-        <li>Gradient Boosting</li>
-        <li>XGBoost</li>
-        <li>SVM</li>
-    </ul>
-</div>
-
-<!-- ================= ROC ================= -->
-<div class="section">
-    <h2>📈 Model Evaluation (ROC Curve)</h2>
-    <p>
-        ROC-AUC is used to select the best performing model.
-    </p>
-
-    <img src="images/roc_curve.png">
-</div>
-
-<!-- ================= FINAL ================= -->
-<div class="section">
-    <h2>🏆 Final Outcome</h2>
-    <p>
-        The model with the highest ROC-AUC score is saved and used for
-        churn prediction in production.
-    </p>
-
-    <div class="highlight">
-        ✔ Best model saved as <b>Churn_Prediction_Best_Model.pkl</b>
-    </div>
-</div>
+<footer>
+<p>© Telecom Churn Prediction | Machine Learning Project</p>
+</footer>
 
 </body>
 </html>
