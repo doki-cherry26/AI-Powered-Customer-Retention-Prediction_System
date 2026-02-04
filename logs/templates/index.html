@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Customer Churn Prediction</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(135deg,#020617,#0f172a,#020617);
+    padding: 30px;
+    color: #fff;
+}
+form{
+    background:#020617;
+    padding:30px;
+    width:760px;
+    margin:auto;
+    border-radius:14px;
+    box-shadow:0 0 30px rgba(56,189,248,0.3);
+}
+h2{
+    text-align:center;
+    color:#38bdf8;
+    text-shadow:0 0 10px #38bdf8;
+}
+label{
+    font-weight:bold;
+    color:#cbd5f5;
+}
+select,input{
+    width:100%;
+    padding:10px;
+    margin:6px 0 16px;
+    border-radius:6px;
+    border:none;
+    background:#1e293b;
+    color:white;
+}
+select:focus,input:focus{
+    outline:2px solid #38bdf8;
+}
+button{
+    background:linear-gradient(90deg,#38bdf8,#22c55e);
+    color:black;
+    padding:14px;
+    width:100%;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(56,189,248,0.6);
+}
+button:hover{
+    transform:scale(1.03);
+}
+
+.result{
+    text-align:center;
+    margin-top:20px;
+    font-size:18px;
+    color:#22c55e;
+    text-shadow:0 0 8px #22c55e;
+}
+
+/* ===== SIM LOGOS ===== */
+.sim-options{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+.sim-options label{
+    background:#020617;
+    border:2px solid #334155;
+    padding:12px;
+    border-radius:12px;
+    cursor:pointer;
+    width:22%;
+    text-align:center;
+    transition:0.3s;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+.sim-options img{
+    width:70px;
+    margin-bottom:5px;
+}
+.sim-options input{display:none;}
+
+/* Glow when selected */
+.sim-options input:checked + img{
+    border:2px solid #38bdf8;
+    border-radius:10px;
+    box-shadow:0 0 12px #38bdf8;
+}
+
+/* Hover animation */
+.sim-options label:hover{
+    transform:translateY(-5px) scale(1.05);
+    border-color:#38bdf8;
+    box-shadow:0 0 20px #38bdf8;
+}
+</style>
+</head>
+
+<body>
+
+<form method="POST" action="/predict">
+<h2>Customer Churn Prediction</h2>
+
+<label>Gender</label>
+<select name="gender"><option>Male</option><option>Female</option></select>
+
+<label>Senior Citizen</label>
+<select name="SeniorCitizen"><option value="0">No</option><option value="1">Yes</option></select>
+
+<label>Partner</label>
+<select name="Partner"><option>Yes</option><option>No</option></select>
+
+<label>Dependents</label>
+<select name="Dependents"><option>Yes</option><option>No</option></select>
+
+<label>Tenure</label>
+<input type="number" name="tenure" required>
+
+<label>Phone Service</label>
+<select name="PhoneService"><option>Yes</option><option>No</option></select>
+
+<label>Multiple Lines</label>
+<select name="MultipleLines"><option>Yes</option><option>No</option><option>No phone service</option></select>
+
+<label>Internet Service</label>
+<select name="InternetService"><option>DSL</option><option>Fiber optic</option><option>No</option></select>
+
+<label>Online Security</label>
+<select name="OnlineSecurity"><option>Yes</option><option>No</option><option>No internet service</option></select>
+
+<label>Online Backup</label>
+<select name="OnlineBackup"><option>Yes</option><option>No</option><option>No internet service</option></select>
+
+<label>Device Protection</label>
+<select name="DeviceProtection"><option>Yes</option><option>No</option><option>No internet service</option></select>
+
+<label>Tech Support</label>
+<select name="TechSupport"><option>Yes</option><option>No</option><option>No internet service</option></select>
+
+<label>Streaming TV</label>
+<select name="StreamingTV"><option>Yes</option><option>No</option><option>No internet service</option></select>
+
+<label>Streaming Movies</label>
+<select name="StreamingMovies"><option>Yes</option><option>No</option><option>No internet service</option></select>
+
+<label>Contract</label>
+<select name="Contract"><option>Month-to-month</option><option>One year</option><option>Two year</option></select>
+
+<label>Paperless Billing</label>
+<select name="PaperlessBilling"><option>Yes</option><option>No</option></select>
+
+<label>Payment Method</label>
+<select name="PaymentMethod">
+<option>Electronic check</option>
+<option>Mailed check</option>
+<option>Bank transfer (automatic)</option>
+<option>Credit card (automatic)</option>
+</select>
+
+<label>SIM</label>
+<div class="sim-options">
+<label>
+<input type="radio" name="SIM" value="Airtel" required>
+<img src="{{ url_for('static',filename='images/airtel.png') }}">
+<div>Airtel</div>
+</label>
+
+<label>
+<input type="radio" name="SIM" value="Jio">
+<img src="{{ url_for('static',filename='images/jio.png') }}">
+<div>Jio</div>
+</label>
+
+<label>
+<input type="radio" name="SIM" value="Vi">
+<img src="{{ url_for('static',filename='images/vi.png') }}">
+<div>Vodafone</div>
+</label>
+
+<label>
+<input type="radio" name="SIM" value="BSNL">
+<img src="{{ url_for('static',filename='images/bsnl.png') }}">
+<div>BSNL</div>
+</label>
+</div>
+
+<label>Device Type</label>
+<select name="DeviceType"><option>Old Device</option><option>New Device</option></select>
+
+<label>Region</label>
+<select name="Region"><option>Urban</option><option>Sub Urban</option><option>Rural</option></select>
+
+<label>Monthly Charges</label>
+<input type="number" step="0.01" name="MonthlyCharges" required>
+
+<label>Total Charges</label>
+<input type="number" step="0.01" name="TotalCharges" required>
+
+<button type="submit">Predict Churn</button>
+
+{% if prediction %}
+<div class="result">
+Prediction: {{ prediction }} <br>
+Probability: {{ probability }}
+</div>
+{% endif %}
+
+{% if error %}
+<div class="result" style="color:red;">{{ error }}</div>
+{% endif %}
+</form>
+
+</body>
+</html>
