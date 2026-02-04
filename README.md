@@ -91,6 +91,12 @@ telecom-churn-prediction/
 <img jio="static/images/jio.png" class="logo">
 <img Bsnl="static/images/vi.png" class="logo">
 <img vodfone="static/images/bsnl.png" class="logo">
+ 🖥️ Web Application
+Users can:
+Enter customer details
+Select SIM provider using logos
+Click Predict Churn
+Receive churn probability instantly
 </div>
 
 <div class="card">
