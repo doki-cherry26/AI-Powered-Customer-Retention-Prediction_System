@@ -241,15 +241,9 @@ Open:
 
 http://127.0.0.1:5000
 
-✅ Conclusion
+Conclusion
 
 This project demonstrates a complete real-world ML churn prediction system.
 With Random Forest (ROC-AUC = 0.91), the model accurately identifies high-risk customers and helps telecom companies reduce churn.
 
 
----
-
-If you want, I can next:
-- Convert this into **HTML documentation**
-- Add **screenshots section**
-- Create **GitHub Pages website**
