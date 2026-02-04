@@ -1,60 +1,6 @@
 # AI-Powered-Customer-Retention-Prediction_System
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Telecom Customer Churn Prediction</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-    font-family:Segoe UI,Arial;
-    margin:0;
-    background:#0f172a;
-    color:#e5e7eb;
-}
-header{
-    background:#020617;
-    padding:30px;
-    text-align:center;
-}
-header h1{color:#38bdf8;}
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:40px;
-}
-h2{color:#38bdf8;border-bottom:2px solid #334155;padding-bottom:6px;}
-.card{
-    background:#020617;
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 0 15px rgba(0,0,0,0.6);
-}
-ul{line-height:1.8;}
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
-}
-th,td{
-    padding:10px;
-    border:1px solid #334155;
-    text-align:center;
-}
-th{background:#1e293b;}
-img.logo{width:70px;margin:10px;}
-.footer{
-    background:#020617;
-    text-align:center;
-    padding:20px;
-    color:#94a3b8;
-}
-</style>
-</head>
-
-<body>
+ A complete end-to-end Machine Learning pipeline to predict whether a telecom customer will churn (leave the service) based on demographic, service usage, and billing information.
+The project includes automated preprocessing, feature engineering, model comparison, and a web interface with SIM provider logos.
 
 <header>
     <h1>📊 Telecom Customer Churn Prediction System</h1>
@@ -141,10 +87,10 @@ telecom-churn-prediction/
 
 <div class="card">
 <h2>📱 SIM Providers</h2>
-<img src="static/images/airtel.png" class="logo">
-<img src="static/images/jio.png" class="logo">
-<img src="static/images/vi.png" class="logo">
-<img src="static/images/bsnl.png" class="logo">
+<img airtel="static/images/airtel.png" class="logo">
+<img jio="static/images/jio.png" class="logo">
+<img Bsnl="static/images/vi.png" class="logo">
+<img vodfone="static/images/bsnl.png" class="logo">
 </div>
 
 <div class="card">
