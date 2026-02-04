@@ -87,11 +87,11 @@ telecom-churn-prediction/
 
 <div class="card">
 <h2>📱 SIM Providers</h2>
-<img airtel="static/images/airtel.png" class="logo">
-<img jio="static/images/jio.png" class="logo">
-<img Bsnl="static/images/vi.png" class="logo">
-<img vodfone="static/images/bsnl.png" class="logo">
- 🖥️ Web Application
+<img sc="static/images/airtel.png" class="logo">
+<img sc="static/images/jio.png" class="logo">
+<img sc="static/images/vi.png" class="logo">
+<img sc="static/images/bsnl.png" class="logo">
+🖥️ Web Application
 Users can:
 Enter customer details
 Select SIM provider using logos
