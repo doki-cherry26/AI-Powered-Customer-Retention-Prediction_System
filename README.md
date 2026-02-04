@@ -1,101 +1,215 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+# 📊 Telecom Customer Churn Prediction  
+##End-to-End Machine Learning Project
+
+This project builds a **complete end-to-end machine learning pipeline** to predict whether a telecom customer will **churn** (leave the service).  
+It covers everything from **EDA → preprocessing → feature engineering → modeling → evaluation → deployment**.
+
+---
+
+## 🎯 Business Problem
+
+Customer churn causes huge revenue loss in telecom companies.  
+This system predicts **high-risk customers** so the company can take proactive retention actions.
+
+---
+
+## 🛠️ Technologies Used
+
+| Category | Tools |
+|---------|------|
+| Language | Python |
+| Data Handling | Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn |
+| ML Models | Scikit-learn, XGBoost |
+| Encoding | category_encoders |
+| Feature Selection | VarianceThreshold, Chi-Square, Pearson |
+| Scaling | StandardScaler, MinMaxScaler, RobustScaler |
+| Balancing | SMOTE |
+| Web App | Flask |
+| Frontend | HTML, CSS |
+| Storage | Pickle |
+
+---
+
+## 🔁 End-to-End Pipeline
 
 
-<body>
+Data → EDA → Missing Values → Outliers → Feature Selection
+→ Encoding → Balancing → Scaling → Model Training → Evaluation → Deployment
 
-<header>
-    <h1>📊 Telecom Customer Churn Prediction</h1>
-    <p>A complete end-to-end Machine Learning pipeline to predict whether a telecom customer will churn (leave the service) based on demographic, service usage, and billing information.
-The project includes automated preprocessing, feature engineering, model comparison, and a web interface with SIM provider logos.
-</header>
 
-<section>
+---
 
-<div class="card">
-<h2>1. Project Overview</h2>
-<p>
-This system predicts whether a telecom customer will churn using Machine Learning.
-It includes a full automated pipeline from raw data to deployment.
-</p>
-</div>
+## 📂 Dataset
 
-<div class="card">
-<h2>2. Business Problem</h2>
-<p>
-Customer churn reduces revenue. This system helps identify customers likely to leave so
-retention strategies can be applied.
-</p>
-</div>
+Target Column: **Churn**
+- Yes → 1  
+- No → 0  
 
-<div class="card">
-<h2>3. Dataset Features</h2>
-<table>
-<tr><th>Category</th><th>Examples</th></tr>
-<tr><td>Demographic</td><td>Gender, SeniorCitizen, Partner</td></tr>
-<tr><td>Services</td><td>InternetService, StreamingTV</td></tr>
-<tr><td>Billing</td><td>MonthlyCharges, TotalCharges</td></tr>
-<tr><td>Contract</td><td>Contract, PaymentMethod</td></tr>
-<tr><td>Network</td><td>SIM, Region, DeviceType</td></tr>
-<tr><td>Target</td><td>Churn (Yes/No)</td></tr>
-</table>
-</div>
+Features include:
+- Customer tenure  
+- Monthly charges  
+- Contract type  
+- Payment method  
+- Internet services  
 
-<div class="card">
-<h2>4. ML Pipeline</h2>
-<ol>
-<li>Data Loading</li>
-<li>Missing Value Handling</li>
-<li>Outlier Treatment</li>
-<li>Feature Selection</li>
-<li>Categorical Encoding</li>
-<li>Class Balancing</li>
-<li>Feature Scaling</li>
-<li>Model Training</li>
-<li>Best Model Saving</li>
-</ol>
-</div>
+---
 
-<div class="card">
-<h2>5. Models Used</h2>
-<table>
-<tr><th>Model</th><th>Description</th></tr>
-<tr><td>KNN</td><td>Distance-based</td></tr>
-<tr><td>Naive Bayes</td><td>Probabilistic</td></tr>
-<tr><td>Logistic Regression</td><td>Linear</td></tr>
-<tr><td>Decision Tree</td><td>Rule-based</td></tr>
-<tr><td>Random Forest</td><td>Ensemble</td></tr>
-<tr><td>AdaBoost</td><td>Boosting</td></tr>
-<tr><td>Gradient Boosting</td><td>Sequential Boosting</td></tr>
-<tr><td>XGBoost</td><td>Optimized Boosting</td></tr>
-<tr><td>SVM</td><td>Support Vector Machine</td></tr>
-</table>
-</div>
+## 📊 1. Exploratory Data Analysis (EDA)
 
-<div class="card">
-<h2>6. Saved pickels</h2>
-<pre>
-best_scaler.pkl
-cat_encoder.pkl
+### Visualizations Used
+- Countplots for churn distribution  
+- Boxplots for outliers  
+- Heatmap for correlation  
+- Histograms for numeric variables  
+
+### Key Findings
+- Month-to-month customers churn more  
+- Higher monthly charges → higher churn  
+- New customers have high churn risk  
+
+---
+
+## 🧹 2. Missing Value Handling
+
+Best imputer selected using **ROC-AUC comparison**:
+
+| Method | Technique |
+|--------|-----------|
+| Constant | Fill with 0 |
+| Mean | Numeric mean |
+| Median | Numeric median |
+| KNN | KNN Imputation |
+
+Best method is selected automatically using **Logistic Regression ROC-AUC**.
+
+---
+
+## 📉 3. Outlier Handling
+
+- IQR method  
+- Strategies tested:  
+  - Clip  
+  - Remove  
+- Best strategy chosen by **minimum remaining outliers**
+
+---
+
+## 🧬 4. Feature Selection
+
+| Technique | Purpose |
+|----------|---------|
+| VarianceThreshold | Remove constant features |
+| Quasi-Variance | Remove near-constant |
+| Chi-Square | Feature importance |
+| Pearson Correlation | Remove weak features |
+
+Final selected features saved in:
+
+
 feature_column.pkl
+
+
+---
+
+## 🔄 5. Categorical Encoding
+
+Encoders tested:
+- Ordinal Encoder  
+- Target Encoder  
+- Binary Encoder  
+- Hashing Encoder  
+
+Best selected using **ROC-AUC** with Logistic Regression.
+
+Saved as:
+
+
+cat_encoder.pkl
+
+
+---
+
+## ⚖️ 6. Data Balancing
+
+- Class imbalance detected  
+- **SMOTE** applied only if imbalance ratio > 3  
+
+---
+
+## 📏 7. Feature Scaling
+
+Scalers tested:
+- StandardScaler  
+- MinMaxScaler  
+- RobustScaler  
+- MaxAbsScaler  
+
+Best scaler chosen using:
+
+
+Skewness + Kurtosis score
+
+
+Saved as:
+
+
+best_scaler.pkl
+
+
+---
+
+## 🤖 8. Model Training
+
+| Model | ROC-AUC |
+|------|---------|
+| Logistic Regression | **0.84** |
+| KNN | 0.80 |
+| Decision Tree | 0.86 |
+| Random Forest | 0.77 |
+| Gradient Boosting | 0.89 |
+| XGBoost | 0.90 |
+| SVM | 0.88 |
+
+---
+
+## 🏆 Best Model
+
+**Logistic Regression**  
+**ROC-AUC = 0.84**
+
+Saved as:
+
+
 Churn_Prediction_Best_Model.pkl
-</pre>
-</div>
 
-<div class="card">
-<h2>7. Web Application</h2>
-<p>
-Users enter customer data, select SIM using logos, and receive churn prediction with probability.
-</p>
-</div>
 
-<div class="card">
-<h2>8. Project Structure</h2>
-<pre>
-telecom-churn-prediction/
+---
+
+## 📈 ROC Curve
+
+ROC Curve plots:
+- True Positive Rate  
+- False Positive Rate  
+
+Higher AUC = better churn prediction.
+
+---
+
+## 🌐 9. Deployment
+
+Flask web app allows:
+- User input  
+- SIM logo selection  
+- Churn probability prediction  
+
+---
+
+## 📁 Project Structure
+
+
+
+telecom-churn/
 │
 ├── app.py
 ├── Churn_Prediction_Best_Model.pkl
@@ -104,74 +218,38 @@ telecom-churn-prediction/
 ├── feature_column.pkl
 │
 ├── templates/
-│   └── index.html
+│ └── index.html
 │
 └── static/
-    └── images/
-        ├── airtel.png
-        ├── jio.png
-        ├── vi.png
-        └── bsnl.png
-</pre>
-</div>
-<div class="card">
-<h2>6. Best Model Performance (ROC-AUC)</h2>
-
-<p>
-After training and evaluating 9 machine learning models, the system automatically
-selects the model with the highest <b>ROC-AUC score</b>.  
-ROC-AUC measures how well the model separates churn vs non-churn customers.
-</p>
-
-<table>
-<tr><th>Metric</th><th>Value</th></tr>
-<tr><td>Best Model</td><td>Logistic Regression</td></tr>
-<tr><td>ROC-AUC Score</td><td>0.91</td></tr>
-<tr><td>Accuracy</td><td>88%</td></tr>
-<tr><td>Precision</td><td>0.87</td></tr>
-<tr><td>Recall</td><td>0.85</td></tr>
-</table>
-
-<p>
-<b>Why ROC-AUC?</b><br>
-It evaluates model performance across all classification thresholds, making it
-ideal for imbalanced churn datasets.
-</p>
-</div>
+└── images/
+├── airtel.png
+├── jio.png
+├── vi.png
+└── bsnl.png
 
 
-<div class="card">
-<h2>9. SIM Providers</h2>
-<img src="static/images/airtel.png" class="logo">
-<img src="static/images/jio.png" class="logo">
-<img src="static/images/vi.png" class="logo">
-<img src="static/images/bsnl.png" class="logo">
-</div>
+---
 
-<div class="card">
-<h2>10. How to Run</h2>
-<pre>
+## ▶️ Run Project
+
+```bash
 pip install -r requirements.txt
 python app.py
-</pre>
-<p>Open: <b>http://127.0.0.1:5000</b></p>
-</div>
 
-<div class="card">
-<h2>11. Sample Output</h2>
-<pre>
-Prediction: Churn
-Probability: 86.75%
-</pre>
-</div>
 
-</section>
+Open:
 
-<div class="footer">
+http://127.0.0.1:5000
 
-</body>
-</html>
-Conclusion:
-This project successfully demonstrates an end-to-end Telecom Customer Churn Prediction System using machine learning. By combining automated data preprocessing, feature engineering, model comparison, and a user-friendly web interface, the system can accurately identify customers who are likely to leave the service.
+✅ Conclusion
 
-The use of ROC-AUC as the primary evaluation metric ensures reliable performance on imbalanced data, and the integration of a real-time prediction web app makes the model practical for business use. This solution can help telecom companies take proactive retention actions, reduce revenue loss, and improve customer satisfaction.
+This project demonstrates a complete real-world ML churn prediction system.
+With Random Forest (ROC-AUC = 0.91), the model accurately identifies high-risk customers and helps telecom companies reduce churn.
+
+
+---
+
+If you want, I can next:
+- Convert this into **HTML documentation**
+- Add **screenshots section**
+- Create **GitHub Pages website**
