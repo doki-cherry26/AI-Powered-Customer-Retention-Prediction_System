@@ -87,10 +87,11 @@ telecom-churn-prediction/
 
 <div class="card">
 <h2>📱 SIM Providers</h2>
-<img sc="static/images/airtel.png" class="logo">
-<img sc="static/images/jio.png" class="logo">
-<img sc="static/images/vi.png" class="logo">
-<img sc="static/images/bsnl.png" class="logo">
+<img src="static/images/airtel.png" class="logo">
+<img src="static/images/jio.png" class="logo">
+<img src="static/images/vi.png" class="logo">
+<img src="static/images/bsnl.png" class="logo">
+</div>
 🖥️ Web Application
 Users can:
 Enter customer details
