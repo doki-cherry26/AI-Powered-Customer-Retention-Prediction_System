@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telecom Churn Prediction - Documentation</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -10,7 +9,8 @@
 
 <header>
     <h1>📊 Telecom Customer Churn Prediction</h1>
-    <p>End-to-End Machine Learning System Documentation</p>
+    <p>A complete end-to-end Machine Learning pipeline to predict whether a telecom customer will churn (leave the service) based on demographic, service usage, and billing information.
+The project includes automated preprocessing, feature engineering, model comparison, and a web interface with SIM provider logos.
 </header>
 
 <section>
@@ -76,7 +76,7 @@ retention strategies can be applied.
 </div>
 
 <div class="card">
-<h2>6. Saved Artifacts</h2>
+<h2>6. Saved pickels</h2>
 <pre>
 best_scaler.pkl
 cat_encoder.pkl
@@ -114,6 +114,31 @@ telecom-churn-prediction/
         └── bsnl.png
 </pre>
 </div>
+<div class="card">
+<h2>6. Best Model Performance (ROC-AUC)</h2>
+
+<p>
+After training and evaluating 9 machine learning models, the system automatically
+selects the model with the highest <b>ROC-AUC score</b>.  
+ROC-AUC measures how well the model separates churn vs non-churn customers.
+</p>
+
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Best Model</td><td>Random Forest Classifier</td></tr>
+<tr><td>ROC-AUC Score</td><td>0.91</td></tr>
+<tr><td>Accuracy</td><td>88%</td></tr>
+<tr><td>Precision</td><td>0.87</td></tr>
+<tr><td>Recall</td><td>0.85</td></tr>
+</table>
+
+<p>
+<b>Why ROC-AUC?</b><br>
+It evaluates model performance across all classification thresholds, making it
+ideal for imbalanced churn datasets.
+</p>
+</div>
+
 
 <div class="card">
 <h2>9. SIM Providers</h2>
@@ -148,3 +173,7 @@ Probability: 86.75%
 
 </body>
 </html>
+Conclusion:
+This project successfully demonstrates an end-to-end Telecom Customer Churn Prediction System using machine learning. By combining automated data preprocessing, feature engineering, model comparison, and a user-friendly web interface, the system can accurately identify customers who are likely to leave the service.
+
+The use of ROC-AUC as the primary evaluation metric ensures reliable performance on imbalanced data, and the integration of a real-time prediction web app makes the model practical for business use. This solution can help telecom companies take proactive retention actions, reduce revenue loss, and improve customer satisfaction.
