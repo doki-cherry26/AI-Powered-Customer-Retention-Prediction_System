@@ -1,249 +1,158 @@
-# 📊 Telecom Customer Churn Prediction  
-##End-to-End Machine Learning Project
+# 📊 AI-Powered-Customer Churn Prediction  
+## End-to-End Machine Learning Project
 
-This project builds a **complete end-to-end machine learning pipeline** to predict whether a telecom customer will **churn** (leave the service).  
-It covers everything from **EDA → preprocessing → feature engineering → modeling → evaluation → deployment**.
-
----
-
-## 🎯 Business Problem
-
-Customer churn causes huge revenue loss in telecom companies.  
-This system predicts **high-risk customers** so the company can take proactive retention actions.
+This project is a complete **end-to-end Machine Learning system** that predicts whether a telecom customer is likely to churn (leave the service).  
+It includes **EDA, feature engineering, preprocessing, model training, evaluation, and deployment** using a Flask web application with a modern user interface.
 
 ---
 
-## 🛠️ Technologies Used
+## 📁 Project Workflow
 
-| Category | Tools |
-|---------|------|
-| Language | Python |
-| Data Handling | Pandas, NumPy |
-| Visualization | Matplotlib, Seaborn |
-| ML Models | Scikit-learn, XGBoost |
-| Encoding | category_encoders |
-| Feature Selection | VarianceThreshold, Chi-Square, Pearson |
-| Scaling | StandardScaler, MinMaxScaler, RobustScaler |
-| Balancing | SMOTE |
-| Web App | Flask |
-| Frontend | HTML, CSS |
-| Storage | Pickle |
+1. Data Collection  
+2. Exploratory Data Analysis (EDA)  
+3. Feature Engineering  
+4. Feature Selection  
+5. Categorical Encoding  
+6. Data Balancing (SMOTE)  
+7. Feature Scaling  
+8. Model Training & Evaluation  
+9. Hyperparameter Tuning  
+10. Best Model Selection  
+11. Flask Web Deployment  
 
 ---
 
-## 🔁 End-to-End Pipeline
+## 1. Exploratory Data Analysis (EDA)
 
-
-Data → EDA → Missing Values → Outliers → Feature Selection
-→ Encoding → Balancing → Scaling → Model Training → Evaluation → Deployment
-
-
----
-
-## 📂 Dataset
-
-Target Column: **Churn**
-- Yes → 1  
-- No → 0  
-
-Features include:
-- Customer tenure  
-- Monthly charges  
-- Contract type  
-- Payment method  
-- Internet services  
+### Tools Used
+- **Matplotlib** – Bar, Pie Charts  
+- **Seaborn** – Histogram, Count, Bar, Box Plots  
+- **Pandas** – Data manipulation  
+- **NumPy** – Numerical operations  
 
 ---
 
-## 📊 1. Exploratory Data Analysis (EDA)
+### Key Insights
 
-### Visualizations Used
-- Countplots for churn distribution  
-- Boxplots for outliers  
-- Heatmap for correlation  
-- Histograms for numeric variables  
-
-### Key Findings
-- Month-to-month customers churn more  
-- Higher monthly charges → higher churn  
-- New customers have high churn risk  
+| Metric | Observation |
+|--------|-------------|
+| Churn Rate | 26.5% |
+| Retention Rate | 73.5% |
+| Highest Churn | New customers (0–14 months) |
+| Lowest Churn | Long-term customers (58–72 months) |
+| Top Internet Service | Fiber Optic |
+| Best Loyalty Group | High Total Charges |
 
 ---
 
-## 🧹 2. Missing Value Handling
+## 2. Feature Engineering
 
-Best imputer selected using **ROC-AUC comparison**:
-
-| Method | Technique |
-|--------|-----------|
-| Constant | Fill with 0 |
-| Mean | Numeric mean |
-| Median | Numeric median |
-| KNN | KNN Imputation |
-
-Best method is selected automatically using **Logistic Regression ROC-AUC**.
+### Handling Missing Values
+| Method | Result |
+|--------|--------|
+| Mean Imputation | Reduced variance |
+| Median Imputation | Robust to outliers |
+| **KNN Imputation (Best)** | Preserved relationships |
 
 ---
 
-## 📉 3. Outlier Handling
-
-- IQR method  
-- Strategies tested:  
-  - Clip  
-  - Remove  
-- Best strategy chosen by **minimum remaining outliers**
-
----
-
-## 🧬 4. Feature Selection
+## 3. Variable Transformation
 
 | Technique | Purpose |
-|----------|---------|
-| VarianceThreshold | Remove constant features |
-| Quasi-Variance | Remove near-constant |
-| Chi-Square | Feature importance |
-| Pearson Correlation | Remove weak features |
-
-Final selected features saved in:
-
-
-feature_column.pkl
-
+|-----------|---------|
+| Log Transform | Reduce skewness |
+| IQR Method | Detect outliers |
+| Box-Cox | Normalize data |
+| **Clipping (Best)** | Handle extreme values |
 
 ---
 
-## 🔄 5. Categorical Encoding
+## 4. Feature Selection
 
-Encoders tested:
-- Ordinal Encoder  
-- Target Encoder  
-- Binary Encoder  
-- Hashing Encoder  
-
-Best selected using **ROC-AUC** with Logistic Regression.
-
-Saved as:
-
-
-cat_encoder.pkl
-
+### Filter Methods
+1. Constant Feature Removal  
+2. Quasi-Constant Removal  
+3. Chi-Square Test  
+4. **Pearson Correlation (Best)**  
 
 ---
 
-## ⚖️ 6. Data Balancing
-
-- Class imbalance detected  
-- **SMOTE** applied only if imbalance ratio > 3  
-
----
-
-## 📏 7. Feature Scaling
-
-Scalers tested:
-- StandardScaler  
-- MinMaxScaler  
-- RobustScaler  
-- MaxAbsScaler  
-
-Best scaler chosen using:
-
-
-Skewness + Kurtosis score
-
-
-Saved as:
-
-
-best_scaler.pkl
-
+## 5. Categorical Encoding
+- Ordinal Encoding  
+- Target Encoding  
+- Binary Encoding  
+- Hashing Encoding  
 
 ---
 
-## 🤖 8. Model Training
+## 6. Data Balancing
 
-| Model | ROC-AUC |
-|------|---------|
-| Logistic Regression | **0.84** |
-| KNN | 0.80 |
-| Decision Tree | 0.86 |
-| Random Forest | 0.77 |
-| Gradient Boosting | 0.89 |
-| XGBoost | 0.90 |
-| SVM | 0.88 |
+Class imbalance handled using **SMOTE**:
+
+\[
+x_{new} = x_i + (x_{zi} - x_i) \times \delta
+\]
 
 ---
 
-## 🏆 Best Model
+## 7. Feature Scaling
 
-**Logistic Regression**  
-**ROC-AUC = 0.84**
-
-Saved as:
-
-
-Churn_Prediction_Best_Model.pkl
-
+| Scaler | Description |
+|--------|-------------|
+| **StandardScaler (Used)** | Mean = 0, Std = 1 |
+| MinMaxScaler | 0 to 1 |
+| RobustScaler | Uses median |
+| MaxAbsScaler | Sparse data |
 
 ---
 
-## 📈 ROC Curve
+## 8. Model Training
 
-ROC Curve plots:
-- True Positive Rate  
-- False Positive Rate  
+Algorithms Tested:
+- Logistic Regression
+- KNN
+- Naive Bayes
+- Decision Tree
+- Random Forest
+- AdaBoost
+- Gradient Boosting
+- XGBoost
+- SVM
 
-Higher AUC = better churn prediction.
-
----
-
-## 🌐 9. Deployment
-
-Flask web app allows:
-- User input  
-- SIM logo selection  
-- Churn probability prediction  
-
----
-
-## 📁 Project Structure
-
-
-
-telecom-churn/
-│
-├── app.py
-├── Churn_Prediction_Best_Model.pkl
-├── best_scaler.pkl
-├── cat_encoder.pkl
-├── feature_column.pkl
-│
-├── templates/
-│ └── index.html
-│
-└── static/
-└── images/
-├── airtel.png
-├── jio.png
-├── vi.png
-└── bsnl.png
-
+Evaluation Metric:
+- **ROC Curve**
+- **AUC Score**
 
 ---
 
-## ▶️ Run Project
+## 9. Best Model
 
-```bash
-pip install -r requirements.txt
-python app.py
+**Logistic Regression**
+- Accuracy: ~75%
+- Best ROC-AUC Score
 
+The model is saved using **Pickle** and deployed using Flask.
 
-Open:
+---
 
-http://127.0.0.1:5000
+## 10. Deployment
 
-Conclusion
+A Flask web app allows users to:
+- Enter customer details
+- Select SIM card using logos
+- Get churn prediction in real time
 
-This project demonstrates a complete real-world ML churn prediction system.
-With Random Forest (ROC-AUC = 0.91), the model accurately identifies high-risk customers and helps telecom companies reduce churn.
+---
 
+## ✅ Conclusion
 
+This project demonstrates a complete machine learning pipeline for telecom churn prediction.  
+Logistic Regression achieved the best ROC-AUC and is deployed in a user-friendly Flask web application for real-time business decision support.
+
+---
+
+## 🚀 Future Enhancements
+- Deep Learning models (ANN, LSTM, CNN)  
+- Real-time streaming data  
+- Interactive dashboards  
+- Cloud deployment  
