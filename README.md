@@ -125,7 +125,7 @@ ROC-AUC measures how well the model separates churn vs non-churn customers.
 
 <table>
 <tr><th>Metric</th><th>Value</th></tr>
-<tr><td>Best Model</td><td>Random Forest Classifier</td></tr>
+<tr><td>Best Model</td><td>Logistic Regression</td></tr>
 <tr><td>ROC-AUC Score</td><td>0.91</td></tr>
 <tr><td>Accuracy</td><td>88%</td></tr>
 <tr><td>Precision</td><td>0.87</td></tr>
@@ -168,8 +168,6 @@ Probability: 86.75%
 </section>
 
 <div class="footer">
-© 2026 Telecom Churn Prediction | Developed by You
-</div>
 
 </body>
 </html>
