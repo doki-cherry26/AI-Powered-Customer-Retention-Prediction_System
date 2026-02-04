@@ -1,73 +1,174 @@
 # AI-Powered-Customer-Retention-Prediction_System
-
----
-
-# 🌐 PROJECT DOCUMENTATION PAGE (HTML)
-
-Save as: `project.html`
-
-```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Telecom Churn Prediction System</title>
+<meta charset="UTF-8">
+<title>Telecom Customer Churn Prediction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+body{
+    font-family:Segoe UI,Arial;
+    margin:0;
+    background:#0f172a;
+    color:#e5e7eb;
+}
+header{
+    background:#020617;
+    padding:30px;
+    text-align:center;
+}
+header h1{color:#38bdf8;}
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:40px;
+}
+h2{color:#38bdf8;border-bottom:2px solid #334155;padding-bottom:6px;}
+.card{
+    background:#020617;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+}
+ul{line-height:1.8;}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+th,td{
+    padding:10px;
+    border:1px solid #334155;
+    text-align:center;
+}
+th{background:#1e293b;}
+img.logo{width:70px;margin:10px;}
+.footer{
+    background:#020617;
+    text-align:center;
+    padding:20px;
+    color:#94a3b8;
+}
+</style>
 </head>
 
 <body>
 
-<h1>📡 Telecom Customer Churn Prediction</h1>
+<header>
+    <h1>📊 Telecom Customer Churn Prediction System</h1>
+    <p>End-to-End Machine Learning Project with Web Interface</p>
+</header>
 
 <section>
-<h2>Project Overview</h2>
-<p>This system predicts whether a telecom customer will churn using machine learning.
-It automatically selects the best preprocessing, encoding, scaling, and model.</p>
-</section>
 
-<section>
-<h2>Pipeline</h2>
+<div class="card">
+<h2>🚀 Project Overview</h2>
+<p>
+This project predicts whether a telecom customer will churn using advanced Machine Learning techniques.
+It includes automated preprocessing, feature engineering, model comparison, and a web interface with SIM provider logos.
+</p>
+</div>
+
+<div class="card">
+<h2>✨ Key Features</h2>
 <ul>
-<li>Missing Value Detection & Best Imputer</li>
-<li>Outlier Detection & Best Strategy</li>
-<li>Feature Selection (Variance, Chi-Square, Pearson)</li>
-<li>Best Categorical Encoder</li>
-<li>SMOTE Data Balancing</li>
-<li>Best Feature Scaling</li>
-<li>Train 9 ML Models</li>
-<li>Select Best via ROC-AUC</li>
+<li>Automated Missing Value Handling</li>
+<li>Outlier Detection & Transformation</li>
+<li>Feature Selection (Variance + Statistical)</li>
+<li>Best Categorical Encoder Auto-Selection</li>
+<li>Class Balancing using SMOTE</li>
+<li>Best Feature Scaling Selection</li>
+<li>9 Machine Learning Models</li>
+<li>Web UI with SIM Logos</li>
 </ul>
+</div>
+
+<div class="card">
+<h2>🧠 Models Used</h2>
+<table>
+<tr><th>Model</th><th>Description</th></tr>
+<tr><td>KNN</td><td>Distance-based classifier</td></tr>
+<tr><td>Naive Bayes</td><td>Probabilistic classifier</td></tr>
+<tr><td>Logistic Regression</td><td>Linear classifier</td></tr>
+<tr><td>Decision Tree</td><td>Rule-based model</td></tr>
+<tr><td>Random Forest</td><td>Ensemble trees</td></tr>
+<tr><td>AdaBoost</td><td>Boosting model</td></tr>
+<tr><td>Gradient Boosting</td><td>Sequential boosting</td></tr>
+<tr><td>XGBoost</td><td>Optimized boosting</td></tr>
+<tr><td>SVM</td><td>Support Vector Machine</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>🔁 Machine Learning Pipeline</h2>
+<ol>
+<li>Data Loading</li>
+<li>Missing Value Imputation</li>
+<li>Outlier Treatment</li>
+<li>Feature Selection</li>
+<li>Categorical Encoding</li>
+<li>Class Balancing</li>
+<li>Feature Scaling</li>
+<li>Model Training</li>
+<li>Best Model Saving</li>
+</ol>
+</div>
+
+<div class="card">
+<h2>📂 Project Structure</h2>
+<pre>
+telecom-churn-prediction/
+│
+├── app.py
+├── Churn_Prediction_Best_Model.pkl
+├── best_scaler.pkl
+├── cat_encoder.pkl
+├── feature_column.pkl
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    └── images/
+        ├── airtel.png
+        ├── jio.png
+        ├── vi.png
+        └── bsnl.png
+</pre>
+</div>
+
+<div class="card">
+<h2>📱 SIM Providers</h2>
+<img src="static/images/airtel.png" class="logo">
+<img src="static/images/jio.png" class="logo">
+<img src="static/images/vi.png" class="logo">
+<img src="static/images/bsnl.png" class="logo">
+</div>
+
+<div class="card">
+<h2>⚙️ How to Run</h2>
+<pre>
+pip install -r requirements.txt
+python app.py
+</pre>
+<p>Open browser: <b>http://127.0.0.1:5000</b></p>
+</div>
+
+<div class="card">
+<h2>📈 Output Example</h2>
+<pre>
+Prediction: Churn
+Probability: 87.32%
+</pre>
+</div>
+
 </section>
 
-<section>
-<h2>Models Used</h2>
-<ul>
-<li>KNN</li>
-<li>Naive Bayes</li>
-<li>Logistic Regression</li>
-<li>Decision Tree</li>
-<li>Random Forest</li>
-<li>AdaBoost</li>
-<li>Gradient Boosting</li>
-<li>XGBoost</li>
-<li>SVM</li>
-</ul>
-</section>
-
-<section>
-<h2>Outputs</h2>
-<ul>
-<li><code>Churn_Prediction_Best_Model.pkl</code></li>
-<li><code>best_scaler.pkl</code></li>
-<li><code>cat_encoder.pkl</code></li>
-<li><code>feature_column.pkl</code></li>
-</ul>
-</section>
-
-<section>
-<h2>Web UI</h2>
-<p>Users can enter customer details and select SIM logos.  
-The system predicts churn and probability.</p>
-</section>
+<div class="footer">
+© 2026 Telecom Churn Prediction | Developed by You
+</div>
 
 </body>
 </html>
